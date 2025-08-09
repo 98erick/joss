@@ -7,7 +7,7 @@
   <meta name="description" content="Una carta romántica en una página web, con fotos y detalles interactivos." />
   <style>
     :root{
-      --bg:#0f0f14;      /* fondo principal */
+      --bg:#f37ebe;      /* fondo principal */
       --ink:#f6f6f9;     /* texto principal */
       --muted:#c9c9d1;   /* texto secundario */
       --rose:#ff4d6d;    /* acento rosado */
@@ -22,7 +22,7 @@
     a{color:var(--rose)}
     /* --- HERO --- */
     .hero{position:relative;min-height:92svh;display:grid;place-items:center;overflow:hidden}
-    .hero::before{content:"";position:absolute;inset:0;background:url('images/portada.jpg') center/cover no-repeat;filter:brightness(.5) saturate(1.1);}
+    .hero::before{content:"";position:absolute;inset:0;background:url('images/joss11.jpg') center/cover no-repeat;filter:brightness(.5) saturate(1.1);}
     .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 60% at 50% 50%, transparent 0, transparent 50%, rgba(0,0,0,.55) 100%)}
     .hero-inner{position:relative;z-index:2;text-align:center;padding:40px}
     .badge{display:inline-block;padding:6px 12px;border-radius:999px;background:linear-gradient(90deg,var(--glass),transparent);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.15);color:var(--muted);font-size:14px}
@@ -78,13 +78,13 @@
   <!-- HERO -->
   <header class="hero" role="banner">
     <div class="hero-inner">
-      <span class="badge">Para <strong><span id="nombre">Mi Amor</span></strong> · <span id="fecha">[dd/mm/aaaa]</span></span>
+      <span class="badge">Para <strong><span id="nombre">Mi Princesa Joss</span></strong> · <span id="fecha">09/08/2025</span></span>
       <h1 id="titulo">Desde que llegaste, todo cambió</h1>
-      <p class="subtitle" id="bajada">Esto no es solo una carta, es mi forma favorita de decirte que eres mi lugar seguro. Gracias por existir y por elegir quedarte.</p>
+      <p class="subtitle" id="bajada">Esto no es solo una página, es mi forma favorita de decirte que eres mi lugar seguro. Gracias por existir y por elegir quedarte.</p>
       <div class="cta">
         <button class="btn" id="leerCarta">Leer mi carta</button>
         <button class="btn btn-outline" id="verGaleria">Ver nuestras fotos</button>
-        <button class="btn btn-outline" id="abrirMensaje">Mensaje secreto</button>
+        <button class="btn btn-outline" id="abrirMensaje">Abrelo al final</button>
       </div>
       <div class="cta" style="margin-top:14px">
         <div class="player">
@@ -102,20 +102,71 @@
     <div class="container card letter">
       <div>
         <p>Amor,</p>
-        <p>Quise escribirte de una forma distinta...</p>
-        <p><em>— Tu nombre</em></p>
+        <p>Hoy quise escribirte de una forma diferente… no con simples palabras, sino con el alma abierta, para que sientas en cada letra el cariño inmenso que tengo por ti. Desde que nuestra historia comenzó, desde esas primeras reacciones tuyas en mis redes y en mis estados, despertaste en mí una curiosidad hermosa… y con el tiempo, esa curiosidad se transformó en admiración y en un sentimiento que crece cada día.
+
+Estos meses contigo han sido un regalo del cielo, llenos de momentos que guardaré por siempre en mi corazón. Sé que Dios tiene un plan para nuestras vidas, y confío en que seguirá permitiéndonos caminar juntos, tomados de la mano, por muchos años más.
+
+Eres parte esencial de mi vida, una luz que me acompaña incluso en mis días más grises. Te aprecio, te quiero y te valoro más de lo que las palabras pueden decir. Hemos pasado por tantas cosas, y aun así, en cada caída y cada victoria, siempre estás ahí. Gracias por tu paciencia, por tus abrazos que sanan, por quedarte incluso cuando no era fácil.
+
+Mi flaquita hermosa, mi niña, mi guapa, mi princesa… mi todo. Lo único que deseo es que seas feliz, y que me dejes compartir y cuidar esa felicidad a tu lado. Tus virtudes son infinitas y sería imposible describirlas todas; solo puedo decirte que eres única en este mundo. Me encantas, me enamoras, y más que nada, quiero seguir siendo parte de tu vida… hoy, mañana y siempre.</p>
+        <p><em>— Erick</em></p>
       </div>
       <figure>
-        <img src="images/carta.jpg" alt="Nosotros, un instante especial" />
+        <img src="images/joss12.jpg" alt="Nosotros, un instante especial">
       </figure>
     </div>
   </section>
   <!-- GALERÍA -->
-  <section id="galeria">
-    <div class="container">
-      <h2>Nuestros momentos favoritos</h2>
-      <div class="gallery">
-        <a href="images/galeria-1.jpg" class="span-8 lb"><img src="images/galeria-1.jpg" alt="Momento 1"/></a>
+<!-- Imagen 1 -->
+            <a href="images/joss1.jpg" class="span-8 lb">
+                <img src="images/joss1.jpg" alt="Momento 1" style="width:350px; height:auto;"/>
+            </a>
+
+            <!-- Imagen 2 -->
+            <a href="images/joss2.jpg" class="span-8 lb">
+                <img src="images/joss2.jpg" alt="Momento 2" style="width:150px; height:auto;"/>
+            </a>
+            <!-- Imagen 3 -->
+            <a href="images/joss3.jpg" class="span-8 lb">
+                <img src="images/joss3.jpg" alt="Momento 2" style="width:150px; height:auto;"/>
+            </a>
+            <!-- Imagen 4 -->
+            <a href="images/joss4.jpg" class="span-8 lb">
+                <img src="images/joss4.jpg" alt="Momento 2" style="width:200px; height:auto;"/>
+            </a>
+            <!-- Imagen 5 -->
+            <a href="images/joss5.jpg" class="span-8 lb">
+                <img src="images/joss5.jpg" alt="Momento 2" style="width:150px; height:auto;"/>
+            </a>
+            <!-- Imagen 6 -->
+            <a href="images/joss6.jpg" class="span-8 lb">
+                <img src="images/joss6.jpg" alt="Momento 2" style="width:200px; height:auto;"/>
+            </a>
+            <!-- Imagen 7 -->
+            <a href="images/joss7.jpg" class="span-8 lb">
+                <img src="images/joss7.jpg" alt="Momento 2" style="width:210px; height:auto;"/>
+            </a>
+            <!-- Imagen 8-->
+            <a href="images/joss8.jpg" class="span-8 lb">
+                <img src="images/joss8.jpg" alt="Momento 2" style="width:160px; height:auto;"/>
+            </a>
+            <!-- Imagen 9 -->
+            <a href="images/joss9.jpg" class="span-8 lb">
+                <img src="images/joss9.jpg" alt="Momento 2" style="width:160px; height:auto;"/>
+            </a>
+            <!-- Imagen 10-->
+            <a href="images/joss10.jpg" class="span-8 lb">
+                <img src="images/joss10.jpg" alt="Momento 2" style="width:160px; height:auto;"/>
+            </a>
+            <!-- Imagen 11 -->
+            <a href="images/joss11.jpg" class="span-8 lb">
+                <img src="images/joss11.jpg" alt="Momento 2" style="width:200px; height:auto;"/>
+            </a>
+            <!-- Imagen 12 -->
+            <a href="images/joss13.jpg" class="span-8 lb">
+                <img src="images/joss13.jpg" alt="Momento 2" style="width:233px; height:auto;"/>
+            </a>
+
       </div>
     </div>
   </section>
@@ -129,7 +180,7 @@
       <div class="modal-body" id="modalBody"></div>
     </div>
   </div>
-  <footer>Hecho con ❤️ para <span id="footerNombre">Mi Amor</span>.</footer>
+  <footer>Con todo mi ❤️ para mi Joss <span id="footerNombre">Mi Amor</span>.</footer>
   <script>
     const $ = s => document.querySelector(s);
     const $$ = s => Array.from(document.querySelectorAll(s));
