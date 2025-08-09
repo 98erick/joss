@@ -1,0 +1,1 @@
+Estructura lista. Sube a GitHub Pages, Netlify o similar.
