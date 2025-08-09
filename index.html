@@ -18,7 +18,7 @@
       --radius: 18px;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,Helvetica,sans-serif;line-height:1.6}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,Helvetica,sans-serif;line-height:1.6; scroll-behavior:smooth;}
     a{color:var(--rose)}
     /* --- HERO --- */
     .hero{position:relative;min-height:92svh;display:grid;place-items:center;overflow:hidden}
@@ -44,6 +44,14 @@
     @media (max-width:900px){
       .letter{grid-template-columns:1fr}
     }
+    /* Highlight suave al llegar */
+    .highlight-enter{box-shadow:0 0 0 0 rgba(255,255,255,0.0), 0 10px 30px rgba(0,0,0,.35)}
+    .highlight-enter.flash{animation:flash 1.2s ease-out 1}
+    @keyframes flash{
+      0%{box-shadow:0 0 0 0 rgba(255,255,255,0.0), 0 10px 30px rgba(0,0,0,.35)}
+      30%{box-shadow:0 0 0 8px rgba(255,255,255,0.18), 0 10px 30px rgba(0,0,0,.35)}
+      100%{box-shadow:0 0 0 0 rgba(255,255,255,0.0), 0 10px 30px rgba(0,0,0,.35)}
+    }
     /* Galería */
     .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:10px}
     .gallery a{position:relative;display:block;border-radius:14px;overflow:hidden}
@@ -60,14 +68,14 @@
     .modal.open{display:grid}
     .modal-inner{max-width:min(1000px,92vw);max-height:85vh;background:var(--card);border:1px solid rgba(255,255,255,.12);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
     .modal-head{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.1)}
-    .modal-body{padding:0}
+    .modal-body{padding:0;display:flex;justify-content:center;align-items:center}
     .modal-body img{display:block;max-height:75vh;width:auto}
     .x{background:transparent;border:none;color:var(--ink);font-size:22px;cursor:pointer}
     /* Música */
     .player{display:flex;align-items:center;gap:12px;background:linear-gradient(90deg,var(--glass),transparent);border:1px solid rgba(255,255,255,.15);padding:12px 16px;border-radius:12px}
     /* Corazones */
     .hearts{position:fixed;pointer-events:none;inset:0;overflow:hidden;z-index:60}
-    .heart{position:absolute;font-size:16px;animation:float 5s linear forwards;opacity:.9}
+    .heart{position:absolute;font-size:16px;animation:float 5s linear forwards;opacity:.9;will-change:transform, opacity}
     @keyframes float{0%{transform:translateY(0) scale(.9)} 100%{transform:translateY(-110vh) scale(1.2);opacity:0}}
     footer{padding:50px 20px;color:var(--muted);text-align:center}
   </style>
@@ -75,6 +83,7 @@
 <body>
   <!-- Corazones animados -->
   <div class="hearts" aria-hidden="true"></div>
+
   <!-- HERO -->
   <header class="hero" role="banner">
     <div class="hero-inner">
@@ -90,25 +99,23 @@
         <div class="player">
           <button class="btn" id="playSong" style="padding:8px 14px">▶︎ Nuestra canción</button>
           <audio id="song" preload="auto">
-            <source src="music/nuestra-cancion.mp3" type="audio/mpeg" />
+            <source src="music/nuestra-cancion.mp3.mp3" type="audio/mpeg" />
           </audio>
-          <span style="color:var(--muted);font-size:14px">Sugerencia: coloca aquí su canción especial (MP3)</span>
+          <span style="color:var(--muted);font-size:14px">Más preciosa es que las piedras preciosas; y todo lo que puedas desear, no se puede comparar a ella. Proverbios 3:4</span>
         </div>
       </div>
     </div>
   </header>
+
   <!-- CARTA -->
   <section id="carta">
-    <div class="container card letter">
+    <div class="container card letter highlight-enter" id="cartaCard">
       <div>
         <p>Amor,</p>
-        <p>Hoy quise escribirte de una forma diferente… no con simples palabras, sino con el alma abierta, para que sientas en cada letra el cariño inmenso que tengo por ti. Desde que nuestra historia comenzó, desde esas primeras reacciones tuyas en mis redes y en mis estados, despertaste en mí una curiosidad hermosa… y con el tiempo, esa curiosidad se transformó en admiración y en un sentimiento que crece cada día.
-
-Estos meses contigo han sido un regalo del cielo, llenos de momentos que guardaré por siempre en mi corazón. Sé que Dios tiene un plan para nuestras vidas, y confío en que seguirá permitiéndonos caminar juntos, tomados de la mano, por muchos años más.
-
-Eres parte esencial de mi vida, una luz que me acompaña incluso en mis días más grises. Te aprecio, te quiero y te valoro más de lo que las palabras pueden decir. Hemos pasado por tantas cosas, y aun así, en cada caída y cada victoria, siempre estás ahí. Gracias por tu paciencia, por tus abrazos que sanan, por quedarte incluso cuando no era fácil.
-
-Mi flaquita hermosa, mi niña, mi guapa, mi princesa… mi todo. Lo único que deseo es que seas feliz, y que me dejes compartir y cuidar esa felicidad a tu lado. Tus virtudes son infinitas y sería imposible describirlas todas; solo puedo decirte que eres única en este mundo. Me encantas, me enamoras, y más que nada, quiero seguir siendo parte de tu vida… hoy, mañana y siempre.</p>
+        <p>Hoy quise escribirte de una forma diferente… no con simples palabras, sino con el alma abierta, para que sientas en cada letra el cariño inmenso que tengo por ti. Desde que nuestra historia comenzó, desde esas primeras reacciones tuyas en mis redes y en mis estados, despertaste en mí una curiosidad hermosa… y con el tiempo, esa curiosidad se transformó en admiración y en un sentimiento que crece cada día.</p>
+        <p>Estos meses contigo han sido un regalo del cielo, llenos de momentos que guardaré por siempre en mi corazón. Sé que Dios tiene un plan para nuestras vidas, y confío en que seguirá permitiéndonos caminar juntos, tomados de la mano, por muchos años más.</p>
+        <p>Eres parte esencial de mi vida, una luz que me acompaña incluso en mis días más grises. Te aprecio, te quiero y te valoro más de lo que las palabras pueden decir. Hemos pasado por tantas cosas, y aun así, en cada caída y cada victoria, siempre estás ahí. Gracias por tu paciencia, por tus abrazos que sanan, por quedarte incluso cuando no era fácil.</p>
+        <p>Mi flaquita hermosa, mi niña, mi guapa, mi princesa… mi todo. Lo único que deseo es que seas feliz, y que me dejes compartir y cuidar esa felicidad a tu lado. Tus virtudes son infinitas y sería imposible describirlas todas; solo puedo decirte que eres única en este mundo. Me encantas, me enamoras, y más que nada, quiero seguir siendo parte de tu vida… hoy, mañana y siempre.</p>
         <p><em>— Erick</em></p>
       </div>
       <figure>
@@ -116,60 +123,27 @@ Mi flaquita hermosa, mi niña, mi guapa, mi princesa… mi todo. Lo único que d
       </figure>
     </div>
   </section>
+
   <!-- GALERÍA -->
-<!-- Imagen 1 -->
-            <a href="images/joss1.jpg" class="span-8 lb">
-                <img src="images/joss1.jpg" alt="Momento 1" style="width:350px; height:auto;"/>
-            </a>
-
-            <!-- Imagen 2 -->
-            <a href="images/joss2.jpg" class="span-8 lb">
-                <img src="images/joss2.jpg" alt="Momento 2" style="width:150px; height:auto;"/>
-            </a>
-            <!-- Imagen 3 -->
-            <a href="images/joss3.jpg" class="span-8 lb">
-                <img src="images/joss3.jpg" alt="Momento 2" style="width:150px; height:auto;"/>
-            </a>
-            <!-- Imagen 4 -->
-            <a href="images/joss4.jpg" class="span-8 lb">
-                <img src="images/joss4.jpg" alt="Momento 2" style="width:200px; height:auto;"/>
-            </a>
-            <!-- Imagen 5 -->
-            <a href="images/joss5.jpg" class="span-8 lb">
-                <img src="images/joss5.jpg" alt="Momento 2" style="width:150px; height:auto;"/>
-            </a>
-            <!-- Imagen 6 -->
-            <a href="images/joss6.jpg" class="span-8 lb">
-                <img src="images/joss6.jpg" alt="Momento 2" style="width:200px; height:auto;"/>
-            </a>
-            <!-- Imagen 7 -->
-            <a href="images/joss7.jpg" class="span-8 lb">
-                <img src="images/joss7.jpg" alt="Momento 2" style="width:210px; height:auto;"/>
-            </a>
-            <!-- Imagen 8-->
-            <a href="images/joss8.jpg" class="span-8 lb">
-                <img src="images/joss8.jpg" alt="Momento 2" style="width:160px; height:auto;"/>
-            </a>
-            <!-- Imagen 9 -->
-            <a href="images/joss9.jpg" class="span-8 lb">
-                <img src="images/joss9.jpg" alt="Momento 2" style="width:160px; height:auto;"/>
-            </a>
-            <!-- Imagen 10-->
-            <a href="images/joss10.jpg" class="span-8 lb">
-                <img src="images/joss10.jpg" alt="Momento 2" style="width:160px; height:auto;"/>
-            </a>
-            <!-- Imagen 11 -->
-            <a href="images/joss11.jpg" class="span-8 lb">
-                <img src="images/joss11.jpg" alt="Momento 2" style="width:200px; height:auto;"/>
-            </a>
-            <!-- Imagen 12 -->
-            <a href="images/joss13.jpg" class="span-8 lb">
-                <img src="images/joss13.jpg" alt="Momento 2" style="width:233px; height:auto;"/>
-            </a>
-
+  <section id="galeria">
+    <div class="container">
+      <div class="gallery">
+        <a href="images/joss1.jpg" class="span-8 lb"><img src="images/joss1.jpg" alt="Momento 1"/></a>
+        <a href="images/joss2.jpg" class="span-4 lb"><img src="images/joss2.jpg" alt="Momento 2"/></a>
+        <a href="images/joss3.jpg" class="span-4 lb"><img src="images/joss3.jpg" alt="Momento 3"/></a>
+        <a href="images/joss4.jpg" class="span-4 lb"><img src="images/joss4.jpg" alt="Momento 4"/></a>
+        <a href="images/joss5.jpg" class="span-4 lb"><img src="images/joss5.jpg" alt="Momento 5"/></a>
+        <a href="images/joss6.jpg" class="span-6 lb"><img src="images/joss6.jpg" alt="Momento 6"/></a>
+        <a href="images/joss7.jpg" class="span-6 lb"><img src="images/joss7.jpg" alt="Momento 7"/></a>
+        <a href="images/joss8.jpg" class="span-4 lb"><img src="images/joss8.jpg" alt="Momento 8"/></a>
+        <a href="images/joss9.jpg" class="span-4 lb"><img src="images/joss9.jpg" alt="Momento 9"/></a>
+        <a href="images/joss10.jpg" class="span-4 lb"><img src="images/joss10.jpg" alt="Momento 10"/></a>
+        <a href="images/joss11.jpg" class="span-8 lb"><img src="images/joss11.jpg" alt="Momento 11"/></a>
+        <a href="images/joss13.jpg" class="span-4 lb"><img src="images/joss13.jpg" alt="Momento 12"/></a>
       </div>
     </div>
   </section>
+
   <!-- MODAL -->
   <div class="modal" id="modal">
     <div class="modal-inner">
@@ -180,19 +154,29 @@ Mi flaquita hermosa, mi niña, mi guapa, mi princesa… mi todo. Lo único que d
       <div class="modal-body" id="modalBody"></div>
     </div>
   </div>
+
   <footer>Con todo mi ❤️ para mi Joss <span id="footerNombre">Mi Amor</span>.</footer>
+
+  <!-- SCRIPTS -->
   <script>
-    const $ = s => document.querySelector(s);
+    const $  = s => document.querySelector(s);
     const $$ = s => Array.from(document.querySelectorAll(s));
-    const leerCarta = $('#leerCarta');
-    const verGaleria = $('#verGaleria');
+
+    const leerCarta    = $('#leerCarta');
+    const verGaleria   = $('#verGaleria');
     const abrirMensaje = $('#abrirMensaje');
-    const playSong = $('#playSong');
-    const song = $('#song');
-    const modal = $('#modal');
-    const modalBody = $('#modalBody');
-    const modalTitle = $('#modalTitle');
-    const cerrarModal = $('#cerrarModal');
+    const playSong     = $('#playSong');
+    const song         = $('#song');
+
+    const modal        = $('#modal');
+    const modalBody    = $('#modalBody');
+    const modalTitle   = $('#modalTitle');
+    const cerrarModal  = $('#cerrarModal');
+
+    const heartsLayer  = $('.hearts');
+    const cartaCard    = $('#cartaCard');
+
+    /* -------- Modal helpers -------- */
     function openModal({ title = '💗', contentNode }){
       modalTitle.textContent = title;
       modalBody.innerHTML = '';
@@ -206,6 +190,245 @@ Mi flaquita hermosa, mi niña, mi guapa, mi princesa… mi todo. Lo único que d
     }
     cerrarModal.addEventListener('click', closeModal);
     modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
+
+    /* -------- Lightbox en la galería -------- */
+    $$('.lb').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const img = document.createElement('img');
+        img.src = a.getAttribute('href');
+        img.alt = a.querySelector('img')?.alt || '';
+        img.style.maxWidth = '100%';
+        img.style.height = 'auto';
+        openModal({ title: '💗', contentNode: img });
+      });
+    });
+
+    /* -------- Autoscroll suave + highlight al abrir la carta -------- */
+    leerCarta.addEventListener('click', () => {
+      cartaCard.classList.remove('flash'); // reset por si acaso
+      document.querySelector('#carta').scrollIntoView({ behavior:'smooth', block:'start' });
+
+      // Pequeño retardo para aplicar el efecto cuando llega
+      setTimeout(() => {
+        cartaCard.classList.add('flash');
+      }, 400);
+
+      // Bonus: una pequeña lluvia de corazones al abrir la carta
+      burstHearts();
+    });
+
+    /* -------- Botón: Ver galería (abre toda la grilla en modal) -------- */
+    verGaleria.addEventListener('click', () => {
+      const grid = document.querySelector('#galeria .gallery');
+      const gridClon = grid ? grid.cloneNode(true) : document.createElement('div');
+      if(!grid){
+        gridClon.textContent = 'No se encontró la galería 😅';
+      } else {
+        gridClon.querySelectorAll('a').forEach(a => a.addEventListener('click', e => e.preventDefault()));
+      }
+      openModal({ title: 'Nuestra galería', contentNode: gridClon });
+      burstHearts(10, 1000); // corazones de emoción
+    });
+
+    /* -------- Botón: Abrir mensaje al final -------- */
+   /* -------- Botón: Abrir mensaje al final (estilo elegante) -------- */
+abrirMensaje.addEventListener('click', () => {
+  // Evita duplicados
+  if (document.querySelector('#rinconcito-card')) {
+    document.querySelector('#rinconcito-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    return;
+  }
+
+  // Inyecta estilos una sola vez
+  if (!document.querySelector('#rinconcito-style')) {
+    const style = document.createElement('style');
+    style.id = 'rinconcito-style';
+    style.textContent = `
+      @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+      .rinconcito-card {
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, 'Great Vibes', cursive;
+        max-width: 680px;
+        margin: 28px auto 0;
+        padding: 28px 24px;
+        border-radius: 20px;
+        background: radial-gradient(120% 140% at 10% 0%, #1a1a1a 0%, #0f0f0f 80%);
+        color: #e9e5db;
+        box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.06);
+        border: 1px solid rgba(255,255,255,.08);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .rinconcito-card::after {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        background: conic-gradient(from 210deg, rgba(255,215,160,.15), transparent 25%, transparent 75%, rgba(255,215,160,.12));
+        filter: blur(8px);
+        z-index: 0;
+      }
+      .rinconcito-content { position: relative; z-index: 1; }
+
+      .rinconcito-title {
+        margin: 0 0 6px;
+        font-family: 'Great Vibes', cursive;
+        font-size: 36px;
+        letter-spacing: .5px;
+        color: #f5e6c8;
+        text-shadow: 0 1px 0 rgba(0,0,0,.5);
+      }
+      .rinconcito-sub {
+        margin: 0 0 18px;
+        font-size: 14px;
+        opacity: .85;
+      }
+      .rinconcito-text {
+        font-size: 18px;
+        line-height: 1.6;
+        margin: 0;
+      }
+      .gold {
+        background: linear-gradient(135deg, #e6c27a 0%, #f5e6c8 35%, #b68e4c 60%, #f0d69a 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .anillo {
+        display: inline-block;
+        font-size: 26px;
+        margin: 0 6px;
+        filter: drop-shadow(0 2px 4px rgba(182,142,76,.35));
+        animation: brillo 2.6s ease-in-out infinite;
+      }
+      .anillo:nth-of-type(1) { animation-delay: .2s; }
+      .anillo:nth-of-type(2) { animation-delay: .9s; }
+      @keyframes brillo {
+        0%, 100% { transform: translateY(0) rotate(0deg) scale(1); filter: drop-shadow(0 2px 4px rgba(182,142,76,.35)); }
+        50% { transform: translateY(-2px) rotate(-6deg) scale(1.06); filter: drop-shadow(0 3px 8px rgba(255,215,160,.55)); }
+      }
+      .rinconcito-divider {
+        width: 120px;
+        height: 1px;
+        margin: 14px auto 18px;
+        background: linear-gradient(90deg, transparent, rgba(245,230,200,.8), transparent);
+        opacity: .7;
+      }
+      .rinconcito-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        border: 0;
+        background: rgba(255,255,255,.06);
+        color: #f5e6c8;
+        border-radius: 999px;
+        padding: 6px 10px;
+        font-size: 12px;
+        cursor: pointer;
+        transition: transform .15s ease, background .2s ease;
+      }
+      .rinconcito-close:hover { transform: scale(1.05); background: rgba(255,255,255,.12); }
+    `;
+    document.head.appendChild(style);
+  }
+
+  const msg = document.createElement('div');
+  msg.id = 'rinconcito-card';
+  msg.className = 'rinconcito-card';
+
+  msg.innerHTML = `
+    <button class="rinconcito-close" aria-label="Cerrar">✕</button>
+    <div class="rinconcito-content">
+      <h3 class="rinconcito-title">Para ti, Joss 💌</h3>
+      <p class="rinconcito-sub">Nuestro rinconcito al final de la página</p>
+      <div class="rinconcito-divider"></div>
+      <p class="rinconcito-text">
+        <span class="anillo">💍</span>
+        <span class="gold">Te amo.</span>
+        Solo para decirte:
+        <br>
+        <span class="gold">¿PUEDO SER TÚ ENAMORADO?</span>
+        <span class="anillo">💍</span>
+      </p>
+    </div>
+  `;
+
+  document.body.appendChild(msg);
+  msg.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  // Efecto de corazones (tu función existente)
+  if (typeof burstHearts === 'function') burstHearts(12, 1200);
+
+  // Cerrar tarjeta
+  msg.querySelector('.rinconcito-close').addEventListener('click', () => {
+    msg.remove();
+  });
+});
+
+    /* -------- Música: reproducir/pausar -------- */
+    playSong.addEventListener('click', () => {
+      if (song.paused) {
+        song.play();
+        playSong.textContent = '⏸ Pausar';
+      } else {
+        song.pause();
+        playSong.textContent = '▶︎ Nuestra canción';
+      }
+    });
+    song.addEventListener('ended', () => {
+      playSong.textContent = '▶︎ Nuestra canción';
+    });
+
+    /* -------- Corazones flotando (continuo + bursts) -------- */
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const HEARTS = ['💗','💖','💘','💝','💓','💞','❤️','🩷'];
+    function spawnHeart(x = Math.random() * window.innerWidth, size = 16, duration = 4500){
+      if(reduceMotion) return;
+      const h = document.createElement('span');
+      h.className = 'heart';
+      h.textContent = HEARTS[Math.floor(Math.random() * HEARTS.length)];
+      h.style.left = `${x}px`;
+      h.style.bottom = `-24px`;
+      h.style.fontSize = `${size}px`;
+      h.style.animationDuration = `${duration}ms`;
+      // ligera deriva
+      const drift = (Math.random() - 0.5) * 120;
+      h.style.transform = `translateX(${drift}px)`;
+      heartsLayer.appendChild(h);
+      h.addEventListener('animationend', () => h.remove());
+    }
+
+    // Lluvia continua muy sutil
+    let heartTimer = null;
+    function startHearts(){
+      if(reduceMotion) return;
+      if(heartTimer) return;
+      heartTimer = setInterval(() => {
+        spawnHeart(undefined, 14 + Math.random()*10, 4000 + Math.random()*2000);
+      }, 600); // cada 0.6s aprox
+    }
+    function stopHearts(){
+      if(heartTimer){ clearInterval(heartTimer); heartTimer = null; }
+    }
+    startHearts();
+
+    // Explosión de corazones “burst”
+    function burstHearts(count = 8, spreadMs = 800){
+      if(reduceMotion) return;
+      const centerX = window.innerWidth/2;
+      for(let i=0;i<count;i++){
+        setTimeout(() => {
+          spawnHeart(centerX + (Math.random()-0.5)*window.innerWidth*0.6, 18 + Math.random()*14, 3800 + Math.random()*1800);
+        }, Math.random()*spreadMs);
+      }
+    }
+
+    // Pausar si la pestaña pierde foco (por rendimiento)
+    document.addEventListener('visibilitychange', () => {
+      if(document.hidden) stopHearts(); else startHearts();
+    });
   </script>
 </body>
 </html>
